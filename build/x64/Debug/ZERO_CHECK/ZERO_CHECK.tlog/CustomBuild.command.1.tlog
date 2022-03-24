@@ -1,0 +1,10 @@
+^C:\USERS\DMITRY\DESKTOP\WORK\LEARNINGPROJECT\BUILD\CMAKEFILES\B5C16FB77A42736F2858B76ACA6F0FBD\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/Dmitry/Desktop/Work/LearningProject -BC:/Users/Dmitry/Desktop/Work/LearningProject/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Dmitry/Desktop/Work/LearningProject/build/main.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
