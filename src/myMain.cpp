@@ -36,7 +36,6 @@ int main(){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
-    std::cout << "asd";
 
     /* Программа №17
     std::array<Card, 52> deck;
