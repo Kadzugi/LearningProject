@@ -9,16 +9,24 @@
 #include <Windows.h>
 #include "testFunction.h"
 
+static std::array<arithmeticStruct, 4> s_arithmeticArray {
+    arithmeticStruct{'+', addNumber}, 
+    arithmeticStruct{'-', subtractNumber}, 
+    arithmeticStruct{'*', multiplyNumber}, 
+    arithmeticStruct{'/', divideNumber}
+};
+
 void ignoreLine(){
     std::cin.clear();
     std::cin.ignore(std::cin.rdbuf()->in_avail());
 }
 
 int writeInt(){
+    std::cout << "Введите целое число: ";
     int number;
     while(!(std::cin >> number)){
         ignoreLine();
-        std::cout << "Не верный ввод! Введите число: ";
+        std::cout << "Не верный ввод! Введите целое число: ";
     }
     ignoreLine();
     return number;
@@ -36,7 +44,11 @@ double writeDouble(){
 
 char writeChar(){
     char symbol;
-    std::cin >> symbol;
+    while(!(std::cin >> symbol)){
+        ignoreLine();
+        std::cout << "Не верный ввод! Введите символ: ";
+    }
+    ignoreLine();
     return symbol;
 }
 
@@ -336,4 +348,66 @@ bool playBlackjack(std::array<Card, 52> &deck){
         std::cout << "Диллер проиграл!\nКол-во очков диллера составило: " << diller_sum << "\nКол-во ваших очков составило: " << player_sum << std::endl;
         return true;
    }   
+}
+
+void intArraySort(int *array, int lenght, ptrBoolFunc funcSort){
+    for(int i = 0; i < lenght - 1; i++){
+       bool is_check = true;
+       for(int j = 0; j < lenght - i - 1; j++){
+           if(funcSort(array[j], array[j + 1])){
+               is_check = false;
+               std::swap(array[j], array[j + 1]);
+           }
+       }
+       if(is_check){
+           //std::cout << "Сортировка остановлена на " << i + 1 << " итерации." <<std::endl;
+           break;
+       } 
+    }
+}
+
+bool sortASC(int a, int b){
+    return a > b; 
+}
+ 
+bool sortDESC(int a, int b){
+    return a < b; 
+}
+
+int addNumber(int a, int b){
+    return a + b;
+}
+
+int subtractNumber(int a, int b){
+    return a - b;
+}
+
+int multiplyNumber(int a, int b){
+    return a * b;
+}
+
+int divideNumber(int a, int b){
+    return a / b;
+}
+
+ptrOperationFunc getArithmeticFcn(char operation){
+    /*if(operation == '+'){
+        return addNumber;
+    } else if(operation == '-'){
+        return subtractNumber;
+    } else if(operation == '*'){
+        return multiplyNumber;
+    } else if(operation == '/'){
+        return divideNumber;
+    }
+    return nullptr;*/
+
+    for(auto &elem: s_arithmeticArray){
+        if(operation == elem.operation){
+            return elem.arithmeticFcn;
+        }
+    }
+
+    std::cout << "Данная математическая операция не реализована!" << std::endl;
+    return nullptr;
 }

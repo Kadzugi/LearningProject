@@ -6,6 +6,7 @@
 #include <Windows.h>
 #include <array>
 #include <vector>
+//#include <functional>
 
 /* Псевдонимы для типов
 typedef int status_t;
@@ -47,12 +48,40 @@ int main(){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    /* Программа №18 Реализация простого калькулятора с использованием указателя на функцию
+    int a {writeInt()};
+    char operation = 'none';
+    while(operation != '+' && operation != '-' && operation != '/' && operation != '*' && operation != '%'){
+        std::cout << "Введите математическую операцию: ";
+        operation = writeChar();
+    }
+    int b {writeInt()}; 
+
+    ptrOperationFunc OperationFunc = getArithmeticFcn(operation);
+    if (OperationFunc != nullptr){
+        std::cout << "a " << operation << " b = " << OperationFunc(a, b) << std::endl;
+    } */
+
+    /* Использование указателя на функцию для способа сортировки массива
+    const int lenght = 7;
+    int array[lenght] = {20, 10, 30, 40, 50, 5, 60};
+    intArraySort(array, lenght, sortDESC);
+
+    for(auto& element : array){
+        std::cout << element << " ";
+    }*/
+
     /* Указатели на функцию
     int (*funcPtr)(double) = funcs;
     int (*funcPtr1)(int);
     funcPtr1 = func;
+    
+    std::function<bool(int,int)> ptrFunc; // создание указателя на функцию с помощью fuction из библиотеки functional
 
     std::cout << "Ptr func: " << funcPtr1 << std::endl;
+
+    funcPtr1(7) - вызов функции func через указатель неявно
+    (*funcPtr1)(7) - вызов функции func через указатель явно (использование разыменовывания)
     */
 
     /* Программа №17

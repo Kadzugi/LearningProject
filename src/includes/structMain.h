@@ -30,3 +30,8 @@ struct Card{
     Lear lear;
     CardValue card_value;
 };
+
+struct arithmeticStruct{
+    char operation;
+    int (*arithmeticFcn)(int, int);
+};
