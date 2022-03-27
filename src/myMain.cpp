@@ -32,10 +32,28 @@ using status_t = int;*/
     *ptr = 5; // поэтому изменение элемента массива приведет к изменению фактического массива
 }*/
 
+/*int func(int a) {
+    return a + 5;
+};
+double func(double a){
+    return a + 5;
+}
+int funcs(double a){
+    return a + 5;
+};*/
+
+
 int main(){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    /* Указатели на функцию
+    int (*funcPtr)(double) = funcs;
+    int (*funcPtr1)(int);
+    funcPtr1 = func;
+
+    std::cout << "Ptr func: " << funcPtr1 << std::endl;
+    */
 
     /* Программа №17
     std::array<Card, 52> deck;
