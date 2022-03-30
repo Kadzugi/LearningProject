@@ -39,3 +39,6 @@ int subtractNumber(int a, int b);
 int multiplyNumber(int a, int b);
 int divideNumber(int a, int b);
 ptrOperationFunc getArithmeticFcn(char operation = '+');
+int factorial(int value);
+int sumNumber(int number);
+void binaryConvert(int value);

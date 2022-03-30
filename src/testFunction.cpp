@@ -411,3 +411,47 @@ ptrOperationFunc getArithmeticFcn(char operation){
     std::cout << "Данная математическая операция не реализована!" << std::endl;
     return nullptr;
 }
+
+int factorial(int value){
+    if(value < 2){
+        std::cout << 1 << " ";
+        return 1;
+    } else {
+        int res = factorial(value - 1) * value;
+        std::cout << res << " ";
+        return res;
+    }
+}
+
+int sumNumber(int number){
+    if((-10 < number) && (number < 10)) {
+        return number;
+    } else {
+        int val = number / 10;
+        int val_2 = number % 10;
+        if(val_2 < 0) {
+            val_2 *= -1;
+        }
+
+        int res = sumNumber(val) + val_2;
+        return res;
+    }
+}
+
+void binaryConvertUnsigned(unsigned int value){
+    if((value / 2) > 0){
+        binaryConvertUnsigned(value / 2);
+    }
+    
+    std::cout << value % 2 << " "; 
+}
+
+void binaryConvert(int value){
+    if(value == 0){
+        std::cout << "0";
+        return;
+    } else {
+        binaryConvertUnsigned(static_cast<unsigned int>(value));
+        return;
+    }
+}

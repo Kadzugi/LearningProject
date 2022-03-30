@@ -48,6 +48,10 @@ int main(){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    //factorial(8);
+    //std::cout << sumNumber(-83569) << std::endl;
+    binaryConvert(-14);
+
     /* Программа №18 Реализация простого калькулятора с использованием указателя на функцию
     int a {writeInt()};
     char operation = 'none';
