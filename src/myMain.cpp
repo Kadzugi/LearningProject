@@ -51,6 +51,8 @@ int main(){
     //factorial(8);
     //std::cout << sumNumber(-83569) << std::endl;
     binaryConvert(-14);
+    std::cout << std::endl;
+    binaryConvert(148);
 
     /* Программа №18 Реализация простого калькулятора с использованием указателя на функцию
     int a {writeInt()};

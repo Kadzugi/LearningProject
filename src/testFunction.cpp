@@ -438,20 +438,14 @@ int sumNumber(int number){
     }
 }
 
-void binaryConvertUnsigned(unsigned int value){
-    if((value / 2) > 0){
-        binaryConvertUnsigned(value / 2);
-    }
-    
-    std::cout << value % 2 << " "; 
-}
-
-void binaryConvert(int value){
+void binaryConvert(unsigned int value){
     if(value == 0){
         std::cout << "0";
         return;
     } else {
-        binaryConvertUnsigned(static_cast<unsigned int>(value));
-        return;
+        if((value / 2) > 0){
+            binaryConvert(value / 2);
+        }
+        std::cout << value % 2 << " "; 
     }
 }

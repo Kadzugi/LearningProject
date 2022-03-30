@@ -41,4 +41,4 @@ int divideNumber(int a, int b);
 ptrOperationFunc getArithmeticFcn(char operation = '+');
 int factorial(int value);
 int sumNumber(int number);
-void binaryConvert(int value);
+void binaryConvert(unsigned int value);
