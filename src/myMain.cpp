@@ -24,14 +24,14 @@ using status_t = int;*/
     };
 }*/
 
-/*void changeArray(int *ptr, int size)
-{
-    for(int i = 0; i < size; i++){
-        std::cout << ptr[i] << std::endl;
-    }
-    std::cout << ptr[1] << std::endl;
-    *ptr = 5; // поэтому изменение элемента массива приведет к изменению фактического массива
-}*/
+// void changeArray(int ptr[] /*int *ptr*/, int size)
+// {
+//     for(int i = 0; i < size; i++){
+//         std::cout << ptr[i] << std::endl;
+//     }
+//     std::cout << ptr[1] << std::endl;
+//     *ptr = 5; // поэтому изменение элемента массива приведет к изменению фактического массива
+// }
 
 /*int func(int a) {
     return a + 5;
@@ -44,15 +44,22 @@ int funcs(double a){
 };*/
 
 
-int main(){
+int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
-    //factorial(8);
-    //std::cout << sumNumber(-83569) << std::endl;
+    for(int i = 0; i < argc; i++){
+        if(i == 1){
+            std::cout << typeid(std::stoi(argv[i])).name() << std::endl;
+        } else{
+            std::cout << argv[i] << std::endl;
+        }
+    }
+    
+    /* Конвертор десятичного числа в двоичное
     binaryConvert(-14);
     std::cout << std::endl;
-    binaryConvert(148);
+    binaryConvert(148);*/
 
     /* Программа №18 Реализация простого калькулятора с использованием указателя на функцию
     int a {writeInt()};
