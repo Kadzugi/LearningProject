@@ -3,6 +3,7 @@
 #include "myConstants.h"
 
 #include <array>
+#include <cstdarg>
 
 //typedef bool (*ptrBoolFunc)(int, int); // использование псевдонима типа через typedef для указателя на функцию
 using ptrBoolFunc = bool (*)(int, int); // использование псевдонима типа через using для указателя на функцию
@@ -42,3 +43,4 @@ ptrOperationFunc getArithmeticFcn(char operation = '+');
 int factorial(int value);
 int sumNumber(int number);
 void binaryConvert(unsigned int value);
+int findAverage(int count, ...);

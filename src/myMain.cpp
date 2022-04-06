@@ -48,13 +48,16 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    std::cout << findAverage(5, 1, 2, 3, 4, 5) << std::endl;
+
+    /* Работа с аргументами команндной строки
     for(int i = 0; i < argc; i++){
         if(i == 1){
             std::cout << typeid(std::stoi(argv[i])).name() << std::endl;
         } else{
             std::cout << argv[i] << std::endl;
         }
-    }
+    }*/
     
     /* Конвертор десятичного числа в двоичное
     binaryConvert(-14);

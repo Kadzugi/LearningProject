@@ -449,3 +449,14 @@ void binaryConvert(unsigned int value){
         std::cout << value % 2 << " "; 
     }
 }
+
+int findAverage(int count, ...){
+    va_list list;
+    va_start(list, count);
+    int sum = 0;
+    for(int i = 0; i < count; i++){
+        sum += va_arg(list, int);
+    }
+    va_end(list);
+    return sum / count;
+}
