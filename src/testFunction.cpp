@@ -460,3 +460,43 @@ int findAverage(int count, ...){
     va_end(list);
     return sum / count;
 }
+
+int binarySearch(int *array, int target, int min, int max){
+    /* рекурсивная версия
+    if((max - min) == 1){
+        if(array[min] == target){
+            return min;
+        } else if(array[max] == target){
+            return max;
+        } else {
+            return -1;
+        }
+    }
+    int average = (min + max) / 2;
+    if(array[average] > target){
+        return binarySearch(array, target, min, average);
+    } else if (array[average] < target){
+        return binarySearch(array, target, average, max);
+    }*/
+
+    // итеративная версия
+    int average = 0;
+    while((max - min) != 1){
+        average = (min + max) / 2;
+        if(array[average] > target){
+            max = average;
+        } else if (array[average] < target){
+            min = average;
+        } else {
+            return average;
+        }
+    }
+  
+    if(array[min] == target){
+        return min;
+    } else if(array[max] == target){
+        return max;
+    } else {
+        return -1;
+    }
+}

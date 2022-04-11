@@ -48,7 +48,20 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    /* Бинарный поиск
+    int array[] = { 4, 7, 9, 13, 15, 19, 22, 24, 28, 33, 37, 41, 43, 47, 50 };
+	int x{writeInt()};
+	int index = binarySearch(array, x, 0, 14);
+ 
+	if (array[index] == x)
+		std::cout << "Good! Your value " << x << " is on position "<< index << " in array!\n";
+	else
+		std::cout << "Fail! Your value " << x << " isn't in array!\n";
+	return 0;*/
+
+    /* Элипсис
     std::cout << findAverage(5, 1, 2, 3, 4, 5) << std::endl;
+    */
 
     /* Работа с аргументами команндной строки
     for(int i = 0; i < argc; i++){
