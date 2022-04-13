@@ -1,3 +1,5 @@
+#include "myFunction.h"
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -7,7 +9,6 @@
 #include <locale>
 #include <codecvt>
 #include <Windows.h>
-#include "testFunction.h"
 
 static std::array<arithmeticStruct, 4> s_arithmeticArray {
     arithmeticStruct{'+', addNumber}, 

@@ -1,6 +1,7 @@
 #pragma once
-#include "structMain.h"
+#include "myStruct.h"
 #include "myConstants.h"
+#include "myClass.h"
 
 #include <array>
 #include <cstdarg>

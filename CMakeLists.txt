@@ -6,6 +6,6 @@ include_directories("src/includes/")
 set(SRC_LIST 
         src/myMain.cpp 
         src/myConstants.cpp 
-        src/testFunction.cpp)
+        src/myFunction.cpp)
 
 add_executable(${PROJECT_NAME} ${SRC_LIST})

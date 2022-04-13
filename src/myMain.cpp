@@ -1,8 +1,9 @@
+#include "includes/myFunction.h"
+
 #include <iostream>
 #include <cstdint>
 #include <string>
 #include <algorithm>
-#include "includes/testFunction.h"
 #include <Windows.h>
 #include <array>
 #include <vector>
@@ -47,6 +48,15 @@ int funcs(double a){
 int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
+
+
+    Numbers n1;
+	n1.set(3, 3);
+	
+	Numbers n2{ 4, 4 };
+ 
+	n1.print();
+	n2.print();
 
     /* Бинарный поиск
     int array[] = { 4, 7, 9, 13, 15, 19, 22, 24, 28, 33, 37, 41, 43, 47, 50 };

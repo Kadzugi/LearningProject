@@ -1,5 +1,7 @@
 #pragma once
-#include "enumsMain.h"
+#include "myEnums.h"
+
+#include <string>
 
 struct Advertising
 {
