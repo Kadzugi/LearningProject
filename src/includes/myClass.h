@@ -33,8 +33,7 @@ public:
 
     bool push(int value){
         if(len_stack < 10){
-            array[len_stack] = value;
-            len_stack++;
+            array[len_stack++] = value;
             return true;
         } else {
             return false;
