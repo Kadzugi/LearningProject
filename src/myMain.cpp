@@ -49,6 +49,19 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    Ball def;
+    def.print();
+ 
+	Ball black("black");
+	black.print();
+	
+	Ball thirty(30.0);
+	thirty.print();
+	
+	Ball blackThirty("black", 30.0);
+	blackThirty.print();
+
+    /* Работа с классом Stack
     Stack stack;
 	stack.reset();
  
@@ -66,6 +79,7 @@ int main(int argc, char *argv[]){
 	stack.pop();
  
 	stack.print();
+    */
 
     /* Бинарный поиск
     int array[] = { 4, 7, 9, 13, 15, 19, 22, 24, 28, 33, 37, 41, 43, 47, 50 };
