@@ -49,6 +49,10 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    RGBA color(0, 135, 135);
+	color.print();
+
+    /* Работа с различными конструкторами класса
     Ball def;
     def.print();
  
@@ -60,6 +64,7 @@ int main(int argc, char *argv[]){
 	
 	Ball blackThirty("black", 30.0);
 	blackThirty.print();
+    */
 
     /* Работа с классом Stack
     Stack stack;
