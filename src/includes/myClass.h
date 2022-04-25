@@ -89,3 +89,14 @@ public:
             << " b=" << static_cast<int>(m_blue) << " a=" << static_cast<int>(m_alpha) << std::endl;
     }
 };
+
+class Employee{
+protected:
+    int m_id;
+    const std::string m_name;
+public:
+    Employee(int id = 0, const std::string name = "") : m_id(id), m_name(name){
+        std::cout << "Id: " << m_id << ", Name: " << m_name << std::endl;
+    }
+    Employee(const std::string& name) : Employee(0, name){}
+};

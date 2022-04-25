@@ -49,8 +49,11 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    Employee a("Дмитрий");
+
+    /* Работа со списком инициализации членов класса
     RGBA color(0, 135, 135);
-	color.print();
+	color.print(); */
 
     /* Работа с различными конструкторами класса
     Ball def;
