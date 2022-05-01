@@ -1,24 +1,7 @@
 #pragma once
 #include <iostream>
 #include <cassert>
-
-class Numbers {
-    double m_a, m_b, m_c;
-public:
-    void setValues(double a, double b, double c){
-        m_a = a;
-        m_b = b;
-        m_c = c;
-    }
-
-    void print(){
-        std::cout << "<" << m_a << ", " << m_b << ", " << m_c << ">" << std::endl;
-    }
-
-    bool isEqual(const Numbers& num){
-        return (m_a == num.m_a && m_b == num.m_b && m_c == num.m_c);
-    }
-};
+#include "global_classes/Numbers.h"
 
 class Stack {
     int len_stack;
