@@ -8,6 +8,8 @@ set(SRC_LIST
         src/myConstants.cpp 
         src/myFunction.cpp
         
-        src/global_classes/Numbers.cpp)
+        src/global_classes/Numbers.cpp
+        src/global_classes/Point3D.cpp
+        src/global_classes/Vector3D.cpp)
 
 add_executable(${PROJECT_NAME} ${SRC_LIST})

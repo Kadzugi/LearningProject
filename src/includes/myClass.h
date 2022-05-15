@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cassert>
 #include "global_classes/Numbers.h"
+#include "global_classes/Point3D.h"
+#include "global_classes/Vector3D.h"
 
 class Stack {
     int len_stack;

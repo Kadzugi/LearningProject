@@ -49,7 +49,15 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
-    Employee a("Дмитрий");
+    Point3D p(3.0, 4.0, 5.0);
+	Vector3D v(3.0, 3.0, -2.0);
+ 
+	p.print();
+	p.moveByVector(v);
+	p.print();
+
+    /* Работа с классом имеющим делегирующий конструктор
+    Employee a("Дмитрий");*/
 
     /* Работа со списком инициализации членов класса
     RGBA color(0, 135, 135);
