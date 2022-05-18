@@ -49,12 +49,22 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    Point first;
+    Point second(2.0, 5.0);
+    first.print();
+    second.print();
+    std::cout << "Distance between two points: " << distanceFrom(first, second) << '\n';
+
+    Welcome hello;
+	hello.print();
+
+    /* Работа с дружественными классами
     Point3D p(3.0, 4.0, 5.0);
 	Vector3D v(3.0, 3.0, -2.0);
  
 	p.print();
 	p.moveByVector(v);
-	p.print();
+	p.print();*/
 
     /* Работа с классом имеющим делегирующий конструктор
     Employee a("Дмитрий");*/

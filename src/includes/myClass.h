@@ -4,6 +4,7 @@
 #include "global_classes/Numbers.h"
 #include "global_classes/Point3D.h"
 #include "global_classes/Vector3D.h"
+#include "global_classes/Point.h"
 
 class Stack {
     int len_stack;
@@ -84,4 +85,30 @@ public:
         std::cout << "Id: " << m_id << ", Name: " << m_name << std::endl;
     }
     Employee(const std::string& name) : Employee(0, name){}
+};
+
+class Welcome
+{
+private:
+	char *m_data;
+ 
+public:
+	Welcome()
+	{
+		m_data = new char[14];
+		const char *init = "Hello, World!";
+		for (int i = 0; i < 14; ++i)
+			m_data[i] = init[i];
+	}
+ 
+	~Welcome()
+	{
+        delete[] m_data;
+	}
+ 
+	void print() const
+	{
+		std::cout << m_data;
+	}
+ 
 };
