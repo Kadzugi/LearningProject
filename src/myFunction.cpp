@@ -166,130 +166,6 @@ void stringArraySort(std::string* str, int length){
     //std::sort(str, str + length);
 }
 
-void printCard(const Card &card){
-    std::string code;
-
-    switch (card.card_value)
-    {
-    case CardValue::two:
-        code+="2";
-        break;
-    case CardValue::tree:
-        code+="3";
-        break;
-    case CardValue::four:
-        code+="4";
-        break;
-    case CardValue::five:
-        code+="5";
-        break;
-    case CardValue::six:
-        code+="6";
-        break;
-    case CardValue::seven:
-        code+="7";
-        break;
-    case CardValue::eight:
-        code+="8";
-        break;
-    case CardValue::nine:
-        code+="9";
-        break;
-    case CardValue::ten:
-        code+="T";
-        break;
-    case CardValue::jack:
-        code+="J";
-        break;
-    case CardValue::queen:
-        code+="Q";
-        break;
-    case CardValue::king:
-        code+="K";
-        break;
-    case CardValue::ace:
-        code+="A";
-        break;
-    default:
-        break;
-    };
-
-    
-    switch (card.lear)
-    {
-    case Lear::odiamonds:
-        code+="O";
-        break;
-    case Lear::christs:
-        code+="C";
-        break;
-    case Lear::worms:
-        code+="W";
-        break;
-    case Lear::piki:
-        code+="P";
-        break;
-    default:
-        break;
-    };
-
-    std::cout << code << " ";
-}
-
-void printDeck(const std::array<Card, 52> &deck){
-    for(const auto &card : deck){
-       printCard(card);
-    }
-    std::cout << std::endl;
-}
-
-void swapCard(Card &a, Card &b){
-    std::swap(a.card_value, b.card_value);
-    std::swap(a.lear, b.lear);
-}
-
-void shuffleDeck(std::array<Card, 52> &deck){
-    for(int i = 0; i < deck.size(); i++){
-        int number = getRandomNumber(0, 51);
-        swapCard(deck[i], deck[number]);
-    }
-}
-
-int getCardValue(const Card &card){
-    switch (card.card_value)
-    {
-    case CardValue::two:
-        return 2;
-    case CardValue::tree:
-        return 3;
-    case CardValue::four:
-        return 4;
-    case CardValue::five:
-        return 5;
-    case CardValue::six:
-        return 6;
-    case CardValue::seven:
-        return 7;
-    case CardValue::eight:
-        return 8;
-    case CardValue::nine:
-        return 9;
-    case CardValue::ten:
-        return 10;
-    case CardValue::jack:
-        return 10;
-    case CardValue::queen:
-        return 10;
-    case CardValue::king:
-        return 10;
-    case CardValue::ace:
-        return 11;
-    default:
-        return -1;
-    };
-    return -1;
-}
-
 std::string playerAction(){
     std::string command_player;
     do{
@@ -299,17 +175,70 @@ std::string playerAction(){
     return command_player;
 }
 
-bool playBlackjack(std::array<Card, 52> &deck){
-    int player_sum = 0, diller_sum = 0;
-    Card *cardPtr = &deck[0];
+// bool playBlackjack(Deck deck){
+//     int player_sum = 0, diller_sum = 0;
+//     Card *cardPtr = &deck[0];
 
-    diller_sum += getCardValue(*cardPtr++);
+//     diller_sum += getCardValue(*cardPtr++);
+
+//     std::cout << "Ваши стартовые карты: ";
+//     printCard(*cardPtr);
+//     player_sum += getCardValue(*cardPtr++);
+//     printCard(*cardPtr);
+//     player_sum += getCardValue(*cardPtr++);
+//     std::cout << "\nВаш счет: " << player_sum << std::endl;
+
+//     while(true){
+        
+//         if(player_sum > 21){
+//             std::cout << "Вы проиграли!\nКол-во ваших очков составило: " << player_sum << "\nКол-во очков диллера составило: " << diller_sum << std::endl;
+//             return false;
+//         }
+        
+//         std::string command_player = playerAction();
+//         if(command_player == "srand"){
+//             break;
+//         }
+
+//         std::cout << "Вы берете карту: ";
+//         printCard(*cardPtr);
+//         std::cout << std::endl;
+//         player_sum += getCardValue(*cardPtr++);
+//         std::cout << "Ваш счет: " << player_sum << std::endl;
+//     }
+    
+//     while(diller_sum < 17){
+//         diller_sum += getCardValue(*cardPtr++);
+//     };
+//     if (diller_sum > 21){
+//         std::cout << "Диллер проиграл!\nКол-во очков диллера составило: " << diller_sum << "\nКол-во ваших очков составило: " << player_sum << std::endl;
+//         return true;
+//     };
+
+//    if(diller_sum > player_sum){
+//         std::cout << "Вы проиграли!\nКол-во ваших очков составило: " << player_sum << "\nКол-во очков диллера составило: " << diller_sum << std::endl;
+//         return false;
+//    } else if(diller_sum == player_sum) {
+//         std::cout << "Ничья!\nКол-во очков диллера составило: " << diller_sum << "\nКол-во ваших очков составило: " << player_sum << std::endl;
+//         return false;
+//    } else{
+//         std::cout << "Диллер проиграл!\nКол-во очков диллера составило: " << diller_sum << "\nКол-во ваших очков составило: " << player_sum << std::endl;
+//         return true;
+//    }   
+// }
+
+bool playBlackjack(Deck deck){
+    int player_sum = 0, diller_sum = 0;
+
+    diller_sum += deck.dealCard().getCardValue();
 
     std::cout << "Ваши стартовые карты: ";
-    printCard(*cardPtr);
-    player_sum += getCardValue(*cardPtr++);
-    printCard(*cardPtr);
-    player_sum += getCardValue(*cardPtr++);
+    Card card_player_first = deck.dealCard();
+    card_player_first.printCard();
+    player_sum += card_player_first.getCardValue();
+    Card card_player_second = deck.dealCard();
+    card_player_second.printCard();
+    player_sum += card_player_second.getCardValue();
     std::cout << "\nВаш счет: " << player_sum << std::endl;
 
     while(true){
@@ -325,14 +254,15 @@ bool playBlackjack(std::array<Card, 52> &deck){
         }
 
         std::cout << "Вы берете карту: ";
-        printCard(*cardPtr);
+        Card card_player = deck.dealCard();
+        card_player.printCard();
         std::cout << std::endl;
-        player_sum += getCardValue(*cardPtr++);
+        player_sum += card_player.getCardValue();
         std::cout << "Ваш счет: " << player_sum << std::endl;
     }
     
     while(diller_sum < 17){
-        diller_sum += getCardValue(*cardPtr++);
+        diller_sum += deck.dealCard().getCardValue();
     };
     if (diller_sum > 21){
         std::cout << "Диллер проиграл!\nКол-во очков диллера составило: " << diller_sum << "\nКол-во ваших очков составило: " << player_sum << std::endl;
@@ -346,7 +276,7 @@ bool playBlackjack(std::array<Card, 52> &deck){
         std::cout << "Ничья!\nКол-во очков диллера составило: " << diller_sum << "\nКол-во ваших очков составило: " << player_sum << std::endl;
         return false;
    } else{
-        std::cout << "Диллер проиграл!\nКол-во очков диллера составило: " << diller_sum << "\nКол-во ваших очков составило: " << player_sum << std::endl;
+        std::cout << "Вы выйграли!\nКол-во очков диллера составило: " << diller_sum << "\nКол-во ваших очков составило: " << player_sum << std::endl;
         return true;
    }   
 }

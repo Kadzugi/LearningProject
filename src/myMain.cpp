@@ -49,10 +49,16 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
-    Monster m = MonsterGenerator::generateMonster();
-	m.print();
+    Deck deck;
+	deck.shuffleDeck();
+	playBlackjack(deck);
 
-    /*Point first;
+    /* Тест глава 8 задания 3
+    Monster m = MonsterGenerator::generateMonster();
+	m.print();*/
+
+    /* Тест глава 8 задания 1,2
+    Point first;
     Point second(2.0, 5.0);
     first.print();
     second.print();
