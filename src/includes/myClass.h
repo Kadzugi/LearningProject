@@ -112,3 +112,59 @@ public:
 	}
  
 };
+
+class Monster {
+public:
+    enum MonsterType : int {
+        Dragon, 
+        Goblin, 
+        Ogre, 
+        Orc, 
+        Skeleton, 
+        Troll, 
+        Vampire,
+        Zombie,
+        MAX_MONSTER_TYPES
+    };
+
+private:
+    MonsterType m_type;
+    std::string m_name;
+    int m_health_points;
+
+    std::string getTypeString() const {
+        switch (m_type) {
+            case 0: return "dragon";
+            case 1: return "goblin";
+            case 2: return "ogre";
+            case 3: return "orc";
+            case 4: return "skeleton";
+            case 5: return "troll";
+            case 6: return "vampire";
+            case 7: return "zombie";
+        }  
+        return "Error!";
+    }
+
+public:
+    Monster(MonsterType type, std::string name, int health_points) 
+        : m_type(type), m_name(name), m_health_points(health_points){};
+
+    void print() const {
+        std::cout << m_name << " is the " << getTypeString() << " that has " << m_health_points << " health points." << std::endl;
+    }
+};
+
+class MonsterGenerator {
+    static int getRandomNumber(int min, int max) {
+		static const double fraction = 1.0 / (static_cast<double>(RAND_MAX) + 1.0);
+		return static_cast<int>(rand() * fraction * (max - min + 1) + min);
+	}
+public:
+    static Monster generateMonster() {
+        Monster::MonsterType type = static_cast<Monster::MonsterType>(getRandomNumber(0, Monster::MAX_MONSTER_TYPES - 1));
+        static std::string name_monster[6]{"Bob", "Jack", "Mary", "Sebastian", "Veronica", "Linda"};
+        int health_points{getRandomNumber(50, 100)}; 
+        return Monster(type, name_monster[getRandomNumber(0, 5)], health_points);
+    };
+};

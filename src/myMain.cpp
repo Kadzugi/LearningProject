@@ -49,14 +49,17 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
-    Point first;
+    Monster m = MonsterGenerator::generateMonster();
+	m.print();
+
+    /*Point first;
     Point second(2.0, 5.0);
     first.print();
     second.print();
     std::cout << "Distance between two points: " << distanceFrom(first, second) << '\n';
 
     Welcome hello;
-	hello.print();
+	hello.print();*/
 
     /* Работа с дружественными классами
     Point3D p(3.0, 4.0, 5.0);
