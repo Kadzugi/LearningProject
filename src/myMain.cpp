@@ -49,11 +49,30 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    Fraction_c f1(3, 4);
+    f1.print();
+ 
+    Fraction_c f2(2, 7);
+    f2.print();
+ 
+    Fraction_c f3 = f1 * f2;
+    f3.print();
+ 
+    Fraction_c f4 = f1 * 3;
+    f4.print();
+ 
+    Fraction_c f5 = 3 * f2;
+    f5.print();
+ 
+    Fraction_c f6 = Fraction_c(1, 2) * Fraction_c(2, 3) * Fraction_c(3, 4);
+    f6.print();
+
+    /* Тест глава 8 задание 4
     Deck deck;
 	deck.shuffleDeck();
-	playBlackjack(deck);
+	playBlackjack(deck);*/
 
-    /* Тест глава 8 задания 3
+    /* Тест глава 8 задание 3
     Monster m = MonsterGenerator::generateMonster();
 	m.print();*/
 

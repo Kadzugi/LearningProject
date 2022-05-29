@@ -298,3 +298,38 @@ public:
         return m_deck[m_cardIndex++];
     }
 };
+
+class Fraction_c {
+    int m_numerator; 
+    int m_denominator;
+
+public:
+    Fraction_c(int numerator=0, int denominator=1):
+		m_numerator(numerator), m_denominator(denominator){
+        reduce();
+    }
+
+    int nod(int a, int b) {
+        return (b == 0) ? (a > 0 ? a : -a) : nod(b, a % b);
+    }
+
+    void print() {
+        std::cout << m_numerator << "/" << m_denominator << std::endl;
+    }
+
+    void reduce() {
+        int n = Fraction_c::nod(m_numerator, m_denominator);
+        m_numerator /= n;
+        m_denominator /=n;
+    }
+
+    friend Fraction_c operator*(const Fraction_c &f1, const Fraction_c &f2) {
+	    return Fraction_c(f1.m_numerator * f2.m_numerator, f1.m_denominator * f2.m_denominator);
+    }
+    friend Fraction_c operator*(const Fraction_c &f1, int number) {
+        return Fraction_c(f1.m_numerator * number, f1.m_denominator);
+    }
+    friend Fraction_c operator*(int number, const Fraction_c &f1) {
+        return f1 * number;
+    }
+};
