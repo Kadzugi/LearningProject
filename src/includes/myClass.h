@@ -294,7 +294,7 @@ public:
         m_cardIndex = 0;
     }
     const Card& dealCard() {
-        assert(m_cardIndex < 52 && "m_deck не имеет индекса больше 51");
+        assert(m_cardIndex < 52 && "Out of range!");
         return m_deck[m_cardIndex++];
     }
 };
@@ -333,3 +333,20 @@ public:
         return f1 * number;
     }
 };
+
+class Mystring {
+std::string m_str;
+public:
+    Mystring(std::string str) : m_str(str){};
+
+    std::string Mystring::operator()(int start_index, int lenght) const {
+        assert(m_str.size() >= start_index + lenght && "Out of range!");
+        
+        std::string substr;
+        for(int i = start_index; i < start_index + lenght; i++){
+            substr += m_str[i];
+        }
+        return substr;
+    }
+};
+

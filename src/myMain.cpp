@@ -49,6 +49,10 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    Mystring string("Hello, world!");
+    std::cout << string(7, 6);
+
+    /* Изучение перегрузки операторов
     Fraction_c f1(3, 4);
     f1.print();
  
@@ -65,7 +69,7 @@ int main(int argc, char *argv[]){
     f5.print();
  
     Fraction_c f6 = Fraction_c(1, 2) * Fraction_c(2, 3) * Fraction_c(3, 4);
-    f6.print();
+    f6.print();*/
 
     /* Тест глава 8 задание 4
     Deck deck;
