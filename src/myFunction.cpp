@@ -431,3 +431,10 @@ int binarySearch(int *array, int target, int min, int max){
         return -1;
     }
 }
+
+Drob makeNegative(Drob d)
+{
+	d.setNumerator(-d.getNumerator());
+    std::cout << "makeNegative successful!" << std::endl;
+	return d;
+}

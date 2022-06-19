@@ -49,8 +49,15 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    /* Изучение конструктора копирования, ключевых слов explicit и delete, а также изучение перегрузки оператора присваивания
+    Drob a(7,1);
+    Drob b(9);
+    a = b;
+    std::cout << makeNegative(7); */
+
+    /* Перегрузка оператора вызова функции ()
     Mystring string("Hello, world!");
-    std::cout << string(7, 6);
+    std::cout << string(7, 6);*/
 
     /* Изучение перегрузки операторов
     Fraction_c f1(3, 4);

@@ -339,7 +339,7 @@ std::string m_str;
 public:
     Mystring(std::string str) : m_str(str){};
 
-    std::string Mystring::operator()(int start_index, int lenght) const {
+    std::string operator()(int start_index, int lenght) const {
         assert(m_str.size() >= start_index + lenght && "Out of range!");
         
         std::string substr;
@@ -348,5 +348,36 @@ public:
         }
         return substr;
     }
+};
+
+class Drob
+{
+private:
+	int m_numerator;
+	int m_denominator;
+ 
+public:
+	// Конструктор по умолчанию
+	Drob(int numerator = 0, int denominator = 1) :
+		m_numerator(numerator), m_denominator(denominator)
+	{
+        std::cout << "Constructor worked here!\n";
+		assert(denominator != 0);
+	}
+ 
+	// Конструктор копирования
+	Drob(const Drob &copy) :
+		m_numerator(copy.m_numerator), m_denominator(copy.m_denominator)
+	{
+		// Нет необходимости выполнять проверку denominator здесь, так как эта проверка уже осуществлена в конструкторе по умолчанию
+		std::cout << "Copy constructor worked here!\n"; // просто, чтобы показать, что это работает
+	}
+ 
+	friend std::ostream& operator<<(std::ostream& out, const Drob &d1) {
+	    out << d1.m_numerator << "/" << d1.m_denominator;
+	    return out;
+    }
+	int getNumerator() { return m_numerator; }
+	void setNumerator(int numerator) { m_numerator = numerator; }
 };
 

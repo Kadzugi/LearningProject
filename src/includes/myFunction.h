@@ -41,3 +41,4 @@ int sumNumber(int number);
 void binaryConvert(unsigned int value);
 int findAverage(int count, ...);
 int binarySearch(int *array, int target, int min, int max);
+Drob makeNegative(Drob d);
