@@ -45,7 +45,6 @@ int funcs(double a){
 };*/
 
 
-
 int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
