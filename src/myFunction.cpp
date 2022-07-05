@@ -432,9 +432,20 @@ int binarySearch(int *array, int target, int min, int max){
     }
 }
 
-Drob makeNegative(Drob d)
-{
+Drob makeNegative(Drob d) {
 	d.setNumerator(-d.getNumerator());
     std::cout << "makeNegative successful!" << std::endl;
 	return d;
+}
+
+IntArray fillArray() {
+	IntArray a(6);
+	a[0] = 6;
+	a[1] = 7;
+	a[2] = 3;
+	a[3] = 4;
+	a[4] = 5;
+    a[5] = 8;
+ 
+	return a;
 }

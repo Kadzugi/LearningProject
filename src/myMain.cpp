@@ -49,6 +49,30 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
+    IntArray a = fillArray();
+	std::cout << a << '\n';
+ 
+	IntArray b(1);
+	a = a;
+	b = a;
+ 
+	std::cout << b << '\n';
+
+    /* Тест глава 9 задание 1
+    Averages avg;
+	avg += 5;
+	std::cout << avg << '\n'; // 5 / 1 = 5
+	avg += 9;
+	std::cout << avg << '\n'; // (5 + 9) / 2 = 7
+	avg += 19;
+	std::cout << avg << '\n'; // (5 + 9 + 19) / 3 = 11
+	avg += -9;
+	std::cout << avg << '\n'; // (5 + 9 + 19 - 9) / 4 = 6
+	(avg += 7) += 11; // выполнение цепочки операций
+	std::cout << avg << '\n'; // (5 + 9 + 19 - 9 + 7 + 11) / 6 = 7
+	Averages copy = avg;
+	std::cout << copy << '\n';*/
+
     /* Изучение конструктора копирования, ключевых слов explicit и delete, а также изучение перегрузки оператора присваивания
     Drob a(7,1);
     Drob b(9);

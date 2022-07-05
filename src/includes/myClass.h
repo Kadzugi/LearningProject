@@ -381,3 +381,87 @@ public:
 	void setNumerator(int numerator) { m_numerator = numerator; }
 };
 
+class Averages {
+int32_t sum_number_m = 0;
+int8_t count_number_m = 0;
+
+public:
+   Averages(){};
+
+//    Averages operator+(const int32_t number){
+//         return Averages(this->sum_number_m + number, this->count_number_m += 1); 
+//    }
+
+//    Averages& operator=(const Averages& avg){
+//         sum_number_m += avg.sum_number_m;
+//         count_number_m += avg.count_number_m;
+
+//         return *this;
+//    }
+
+   Averages& operator+=(const int32_t number){
+        sum_number_m += number;
+        count_number_m += 1;
+        return *this; 
+   }
+
+   friend std::ostream& operator<<(std::ostream& out, Averages& avg) {
+        return out << static_cast<int>(avg.sum_number_m / avg.count_number_m);
+   };
+};
+
+class IntArray{
+    int size_arr_m;
+    int* arr_m;
+public:
+    IntArray(int size_arr) : size_arr_m(size_arr) {
+        arr_m = new int[size_arr_m]();
+    }
+
+    IntArray(const IntArray& copy_intArr) {
+        size_arr_m = copy_intArr.size_arr_m;
+        if(copy_intArr.arr_m){
+            arr_m = new int[size_arr_m]();
+            for(int i = 0; i < size_arr_m; i++){
+                arr_m[i] = copy_intArr.arr_m[i];
+            }
+        } else {
+            arr_m = nullptr;
+        }
+    }
+
+    int& operator[] (const int index) {
+        assert(index < size_arr_m && "Out off range!");
+        return arr_m[index];
+    }
+
+    IntArray& operator=(const IntArray& intArr){
+        if (this == &intArr)
+            return *this;
+
+        delete[] arr_m;
+        size_arr_m = intArr.size_arr_m;
+        if(intArr.arr_m){
+            arr_m = new int[size_arr_m]();
+            for(int i = 0; i < size_arr_m; i++){
+                arr_m[i] = intArr.arr_m[i];
+            }
+        } else {
+            arr_m = nullptr;
+        }
+        return *this;
+    }
+
+    friend std::ostream& operator<<(std::ostream& out, IntArray& intArr) {
+        for(int i = 0; i < intArr.size_arr_m; i++){
+           out << intArr.arr_m[i] << " ";
+        }
+        out << "\n";
+        return out;
+    };
+
+    ~IntArray(){
+        delete[] arr_m;
+        arr_m = nullptr;
+    }
+};
