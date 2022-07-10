@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cassert>
 #include <array>
+#include <iomanip>
+#include <math.h>
 #include "global_classes/Numbers.h"
 #include "global_classes/Point3D.h"
 #include "global_classes/Vector3D.h"
@@ -464,4 +466,40 @@ public:
         delete[] arr_m;
         arr_m = nullptr;
     }
+};
+
+class FixedPoint {
+    int16_t numerator_m;
+    int8_t denominator_m;
+public:
+    FixedPoint(int16_t numerator, int8_t denominator) 
+        : numerator_m(numerator), denominator_m(denominator)
+    {
+        assert(numerator_m <= 32767 && numerator_m >= -32768 && "numerator_m out off range!");
+        assert(denominator_m <= 99 && denominator_m >= -99 && "denominator_m out off range!");
+
+        if(numerator_m < 0 && denominator_m > 0){
+            denominator_m = -denominator_m;
+        } else if (numerator_m > 0 && denominator_m < 0){
+            numerator_m = -numerator_m;
+        }
+    };
+
+    FixedPoint(double number){
+
+        numerator_m = static_cast<int16_t>(number);
+        denominator_m = static_cast<int8_t>(round((number - numerator_m) * 100));
+        
+        assert(numerator_m <= 32767 && numerator_m >= -32768 && "numerator_m out off range!");
+        assert(denominator_m <= 99 && denominator_m >= -99 && "denominator_m out off range!");
+    }
+
+    operator double(){
+        return numerator_m + static_cast<double>(denominator_m) / 100;
+    }
+
+    friend std::ostream& operator<<(std::ostream& out, FixedPoint& fixed_point) {
+        out << static_cast<double>(fixed_point);
+        return out;
+    };
 };
