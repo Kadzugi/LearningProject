@@ -43,3 +43,4 @@ int findAverage(int count, ...);
 int binarySearch(int *array, int target, int min, int max);
 Drob makeNegative(Drob d);
 IntArray fillArray();
+void SomeTest();

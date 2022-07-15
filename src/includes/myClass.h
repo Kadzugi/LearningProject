@@ -498,8 +498,28 @@ public:
         return numerator_m + static_cast<double>(denominator_m) / 100;
     }
 
+    FixedPoint operator-(){
+        return FixedPoint(-static_cast<double>(*this));
+    }
+
+    friend FixedPoint operator+(FixedPoint& a, FixedPoint& b) {
+        double sum = static_cast<double>(a) + static_cast<double>(b);
+        return FixedPoint(sum);
+    }
+
+    friend bool operator==(FixedPoint& a, FixedPoint& b) {
+        return static_cast<double>(a) == static_cast<double>(b);
+    }
+
+    friend std::istream& operator>>(std::istream& in, FixedPoint& a) {
+        double number;
+        in >> number;
+        a = FixedPoint(number);
+
+        return in;
+    }
+
     friend std::ostream& operator<<(std::ostream& out, FixedPoint& fixed_point) {
-        out << static_cast<double>(fixed_point);
-        return out;
+        return out << static_cast<double>(fixed_point);
     };
 };

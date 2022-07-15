@@ -49,18 +49,19 @@ int main(int argc, char *argv[]){
     setlocale(LC_ALL, "fr_BE.UTF-8");
     srand(static_cast<unsigned int>(time(0)));
 
-    FixedPoint a(0.03);
+    /* Тест глава 9 задание 3
+    SomeTest();
+ 
+	FixedPoint a(-0.48); 
 	std::cout << a << '\n';
  
-	FixedPoint b(-0.03);
-	std::cout << b << '\n';
+	std::cout << -a << '\n';
  
-	FixedPoint c(4.01); // сохранится, как 4.0099999..., поэтому нам нужно это всё округлить
-	std::cout << c << '\n';
- 
-	FixedPoint d(-4.01); // сохранится, как -4.0099999..., поэтому нам нужно это всё округлить
-	std::cout << d << '\n';
-
+	std::cout << "Enter a number: "; // введите 5.678
+	std::cin >> a;
+	
+	std::cout << "You entered: " << a << '\n';*/
+    
     /* Тест глава 9 задание 2
     IntArray a = fillArray();
 	std::cout << a << '\n';
