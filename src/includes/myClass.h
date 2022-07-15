@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cassert>
 #include <array>
+#include <vector>
 #include <iomanip>
 #include <math.h>
 #include "global_classes/Numbers.h"
@@ -522,4 +523,97 @@ public:
     friend std::ostream& operator<<(std::ostream& out, FixedPoint& fixed_point) {
         return out << static_cast<double>(fixed_point);
     };
+};
+
+class Worker {
+private:
+    std::string m_name;
+ 
+public:
+    Worker(std::string name)
+        : m_name(name)
+    {
+    }
+ 
+    std::string getName() { return m_name; }
+};
+ 
+class Department {
+private:
+    std::vector<Worker*> workers_m; 
+public:
+    void add(Worker *worker) {
+        workers_m.push_back(worker);
+    }
+
+    friend std::ostream& operator<<(std::ostream& out, Department& department){
+        out << "Department:";
+        for(auto &worker : department.workers_m){
+            out << " " << worker->getName();
+        }
+        return out << std::endl;
+    }
+};
+
+class ArrayInt
+{
+private:
+	int m_length;
+	int *m_data;
+ 
+public:
+	ArrayInt() :
+		m_length(0), m_data(nullptr)
+	{
+	}
+ 
+	ArrayInt(int length) :
+		m_length(length)
+	{
+		m_data = new int[length];
+	}
+ 
+	explicit ArrayInt(const std::initializer_list<int> &list): // позволяем инициализацию ArrayInt через список инициализации
+		ArrayInt(list.size()) // используем концепцию делегирования конструкторов для создания начального массива, в который будет выполняться копирование элементов
+	{
+		// Инициализация нашего начального массива значениями из списка инициализации
+		int count = 0;
+		for (auto &element : list)
+		{
+			m_data[count] = element;
+			++count;
+		}
+	}
+ 
+	~ArrayInt()
+	{
+		delete[] m_data;
+		// Нам не нужно здесь присваивать значение null для m_data или выполнять m_length = 0, так как объект будет уничтожен сразу же после выполнения этой функции
+	}
+ 
+	int& operator[](int index)
+	{
+		assert(index >= 0 && index < m_length);
+		return m_data[index];
+	}
+ 
+	int getLength() { return m_length; }
+
+    ArrayInt& operator=(const std::initializer_list<int> &list){
+        if (list.size() != static_cast<size_t>(m_length)) {
+            delete[] m_data;
+            m_length = list.size();
+            m_data = new int[m_length];
+        }
+
+        // Инициализация нашего начального массива значениями из списка инициализации
+		int count = 0;
+		for (auto &element : list)
+		{
+			m_data[count] = element;
+			++count;
+		}
+        return *this;
+    }
+
 };
